@@ -1,0 +1,57 @@
+
+	
+<div class="_container">
+	<form action="play.php" method="post">
+		<table>
+		<tr>
+			<td>Category</td>
+			<td>
+				<select name="category">
+				<option>All</option>
+				<?php
+					
+
+					foreach($this->categories as $index => &$row)
+					{
+						?><optgroup label="<?php echo $index;?>">						
+						<?
+
+						foreach($row as $subdex => &$sub)
+						{
+
+						?><option value="<?php echo $sub['id'];?>"> - <?php echo $sub['label'];?></option><?
+						}
+						echo "</optgroup>";
+					}
+
+
+				?>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Level</td>
+			<td>
+				<select name="level">
+					<option value="1">1</option>
+					<option value="2">2</option>
+				</select>
+			
+			</td>
+		</tr>
+		<tr>
+			<td>Number of questions</td>
+			<td>
+				<select name="num_questions">
+					<option value="4">4</option>
+					<option value="8">8</option>
+					<option value="12">12</option>
+				</select>
+			
+			</td>
+		</tr>
+		</table>
+		<input type="submit" value="Play" />
+	</form>
+
+	

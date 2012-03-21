@@ -1,0 +1,174 @@
+
+	body {
+		font-size: 12px;
+		font-family: Trebuchet MS, arial, verdana;
+		background: url('http://www.thinksheep.nl/krista/quiz/img/landscape_design_background.png') repeat-x 0px -70px;
+		background-color:#91c02b;
+		color: #444;
+		margin: 0px;
+	} 
+
+	
+	
+	h3,h2,h1 {margin: 0px}
+	
+	._container {
+		width: 400px; 
+		font-family: verdana; 
+		font-size: 10px;
+		margin: 0px auto;
+	}
+
+	form, option, select, div, td {
+		font-size: 13px;
+	}
+
+	form.login {
+		background: #fff;
+		width: 360px;
+		text-align: center;
+		margin: 0px auto 0px auto;
+		padding: 20px;
+	}
+
+	form.login input[type="text"],form.login input[type="password"] {
+		border: solid 1px #ccc;
+		width: 260px;
+		padding: 4px;
+	}
+	
+	.loginBtn {
+		text-align: right;
+	}
+
+	form.login input[type="submit"]
+	{
+		border: solid 1px #b94100;
+		color: #fff;
+		padding: 4px 20px;;
+		background:#e36d17;
+		font-weight: bold;
+	}
+	
+	form.login h2 {
+		text-align: left;
+		margin: 0px 0px 20px 0px;
+		color: #3d3d3d;
+	}
+	
+	#menu {
+		background: url(/img/bar.gif);
+		height: 42px;
+		text-align: center;
+	}
+
+	#menu .center div {
+		color: #fff;
+		float: left;
+		font-size: 16px;
+		padding: 10px 20px;
+		margin-right: 30px;
+		cursor: pointer;
+	}
+	
+	#menu .center {
+		width: 940px;
+		margin: 0px auto;
+		overflow: hidden;
+		text-align: center;
+		padding-left: 60px;
+	}
+
+	#menu .active {
+		background: #63bdfe;
+		height: 42px;
+		font-weight: bold;
+	}
+
+	#menu .right {
+		float: right!important;
+		font-size: 14px!important;
+		padding: 10px 0px 0px 0px!important
+	}
+	
+	#menu a {
+		color: #fff;
+		text-decoration: none;
+	}
+	
+	.screen {
+		width: 983px;
+		background: url(/img/screen_bottom.png) no-repeat bottom;
+		margin: 40px auto 0px auto;
+		padding-bottom: 7px;
+	}
+
+	.screen .top {
+		background: url(/img/screen_top.png) no-repeat top;
+		height: 4px;
+	}
+
+	.screen .content {
+		background: #fff;
+		border: solid 1px #ccc;
+		border-width: 0px 1px;
+		padding: 15px;
+	}
+	
+	.screen .center .right {float: right}
+	
+	.quiztop {overflow: hidden; }
+	.quiztop div {font-size: 16px; float: left; margin-right: 60px;}
+	.quiztop div span {color: #4eb5fe}
+	
+	.questionbox {
+		width: 572px;
+		height: 121px;
+		background: url(/img/vraagbox.gif);
+		margin-top: 30px;
+		padding: 20px;
+		color: #fff;
+		font-size: 16px;
+	}
+	
+	.answer_open {display: none; overflow: hidden;}
+	.answer_open textarea {
+		border: solid 1px #d5d5d5; 
+		background: #dcecf9;
+		width: 570px;
+		margin-top: 24px;
+		height: 64px;
+		font-size: 13px;
+		padding: 10px 20px;
+		font-family: Trebuchet MS, arial, verdana;
+	}
+
+	.answer_open input[type="button"] {
+		border: solid 0px;
+		background: #f39b01;
+		color: #fff;
+		font-weight: bold;
+		padding: 6px 20px;
+		width: 200px;
+		float: right;
+		margin-top: 4px;
+		cursor: pointer;
+	}
+	
+	.answer_mp {display: none;}
+	.answer_mp div {
+		background: #89b80e;
+		color: #fff;
+		padding: 8px 20px;
+		margin: 4px 0px 0px 0px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+
+	.answer_mp div:hover {
+		background: #9dd114;
+	}
+	
+	.display {
+		display: block;
+	}

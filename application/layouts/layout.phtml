@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Krista Game</title>
+		<link type="text/css" rel="stylesheet" href="/css/style.css"  media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css" type="text/css" />
+		<script src="https://www.google.com/jsapi" type="text/javascript"></script>
+		<script type="text/javascript">
+			google.load("jquery", "1.5.2");
+			google.load("jqueryui", "1.8.14");
+		</script>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta name="robots" content="index, follow" />
+		<meta name="Revisit-After" content="7 Days" />
+		<meta http-equiv="content-language" content="nl" />
+		<meta http-equiv="imagetoolbar" content="no" />
+		<meta http-equiv="Content-Type" content="text/html" />
+	</head>
+	<body>
+		<div id="menu">
+			<div class="center">
+				<?php
+					$exp = explode("/", $_SERVER['REQUEST_URI']);
+					
+					$arr = Array(
+						"/" => "Game stats",
+						"/play" => "Play"
+					);
+					
+					foreach ($arr as $url => $label)
+					{
+						$active = $url == '/'. $exp[1] ? 'active' : '';
+					?>
+					<div class="<?php echo $active;?>"><a href="<?php echo $url;?>"><?php echo $label;?></a></div>
+					<?
+					}
+				?>
+				
+				
+				<div class="right"><a href="/logout">Logout</a></div>
+				<div class="right">Welkom <?php echo $_SESSION['user']['username']; ?></div>
+			</div>
+		</div>
+		
+		<div class="screen">
+			<div class="top"></div>
+			<div class="content">
+				<?php echo $this->content();?>
+			</div>
+		</div>
+		
+		
+	</body>
+</html>
