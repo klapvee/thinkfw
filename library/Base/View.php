@@ -65,6 +65,9 @@ class Base_View
         */
     public $contentSidebar;
 
+	public $javascript;
+
+	public $css;
 
     public function __construct()
     {
@@ -110,6 +113,60 @@ class Base_View
     }
 
     /**
+     * addJavascript
+     *
+     * adds javascript code
+     *
+     * @param string javascript
+     * @return void
+     */
+    public function addJavascript($javascript)
+    {
+    	$this->javascript .= "\n" . $javascript;
+    }
+
+    /**
+     * addJavascript
+     *
+     * adds javascript code
+     *
+     * @param string javascript
+     * @return void
+     */
+    public function addJavascriptFile($file)
+    {
+    	$this->javascript .= "\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . 'js/' . $file);
+    }
+
+    /**
+     * addJavascript
+     *
+     * adds javascript code
+     *
+     * @param string javascript
+     * @return void
+     */
+    public function addCss($css)
+    {
+    	$this->javascript .= "\n" . $javascript;
+    }
+
+    /**
+     * addJavascript
+     *
+     * adds javascript code
+     *
+     * @param string javascript
+     * @return void
+     */
+    public function addCssFile($file)
+    {
+    	$this->css .= "\n" . file_get_contents($_SERVER['DOCUMENT_ROOT'] . 'css/' . $file);
+    }
+
+
+
+    /**
         *
         * @param Base_Controller_Action $controller
         * @return void
@@ -130,8 +187,33 @@ class Base_View
 
     public function getLayout()
     {
-        if (!$this->renderView) return;
+        if (!$this->renderView) {
+            return;
+       	}
+
+        ob_start();
         require APPLICATION_PATH . '/layouts/' . $this->layout;
+        $content = ob_get_contents();
+        ob_end_clean();
+
+        $checksumJs = md5($this->javascript);
+        $checksumCss = md5($this->css);
+
+        $appPath = realpath($_SERVER['DOCUMENT_ROOT'] . '../') . '/application';
+
+        if (!file_exists($appPath . '/cache/js/' . $checksumJs . '.js')) {
+            Base_Application::writeFile($appPath . '/cache/js/' . $checksumJs . '.js', $this->javascript);
+        }
+
+        if (!file_exists($appPath . '/cache/css/' . $checksumCss . '.css')) {
+            Base_Application::writeFile($appPath . '/cache/css/' . $checksumCss . '.css', $this->css);
+        }
+
+        $content = str_replace('<!--[publication_css]-->', '<link type="text/css" rel="stylesheet" href="/css/gather/'.$checksumCss.'.css"  media="screen" charset="utf-8" />', $content);
+        $content = str_replace('<!--[publication_javascript]-->', '<script type="text/javascript" src="/js/gather/'.$checksumJs.'.js"></script>', $content);
+
+        echo $content;
+
     }
 
     public function pageTitle()
@@ -144,15 +226,14 @@ class Base_View
         if (!$this->renderView) return;
         $dir = empty( $this->path[1]) ? 'index' : $this->path[1];
 
-        if (empty($this->view))
-        {
-            $file = empty( $this->path[2]) ? 'index' : $this->path[2];
+        if (empty($this->view)) {
+            $file = empty( $this->path[1]) ? 'index' : $this->path[2];
         } else {
             $file = $this->view;
         }
 
-        if (is_file(APPLICATION_PATH . '/views/html/'.$dir . '/' . $file . '.phtml'))
-        {
+
+        if (is_file(APPLICATION_PATH . '/views/html/'.$dir . '/' . $file . '.phtml')) {
             require APPLICATION_PATH . '/views/html/'.$dir . '/' . $file . '.phtml';
         }
     }
