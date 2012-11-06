@@ -60,14 +60,38 @@ class Base_View
     public $contentBottom;
 
     /**
-        *
-        * @var string
-        */
+     *
+     * @var string
+     */
     public $contentSidebar;
 
-	public $javascript;
+    /**
+     * Javascript collection
+     * @var string
+     */
+    public $javascript;
 
-	public $css;
+    /**
+     * Css collection
+     *
+     * @var string
+     */
+    public $css;
+
+    /**
+     * Description for the meta
+     *
+     * @var string
+     */
+    public $metaDescription;
+
+    /**
+     * Keywords for the meta
+     *
+     * @var string
+     */
+    public $metaKeywords;
+
 
     public function __construct()
     {
@@ -246,6 +270,28 @@ class Base_View
     public function sidebar()
     {
         return $this->contentSidebar;
+    }
+
+    /**
+     * setMetakeywords
+     *
+     * @param string $text
+     * @return void
+     */
+    public function setMetakeywords($text)
+    {
+    	$this->metaKeywords = $text;
+    }
+
+    /**
+     * setMetadescription
+     *
+     * @param string $text
+     * @return void
+     */
+    public function setMetadescription($text)
+    {
+    	$this->metaDescription = $text;
     }
 
     public function render()
