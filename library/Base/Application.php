@@ -74,4 +74,26 @@ class Base_Application
 
         }
     }
+
+    /**
+     * writeFile
+     *
+     * basic qrite to file function
+     *
+     * @param string $location
+     * @param string $content
+     * @return boolean
+     */
+    public function writeFile($location, $content)
+    {
+    	$fd = @fopen($location, 'a');
+        if ($fd) {
+            fwrite($fd, $content);
+            fclose($content);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
